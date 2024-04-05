@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mara Angela">
+    <title>Sistema Crud</title>
+</head>
+
+<body>
+
+    <script>
+        // criar sistema de gerenciamenti de usuario
+        function showMenu() {
+            let opcao = parseInt(prompt(`***** Menu********
+            [1] Cadastrar usuario
+            [2] listar usuario
+            [3] atualizar usuario
+            [4] deletar usuario
+            [5] sair do programa`));
+        }
+        // metodo de cadastro de usuario => (verbo http;post)
+        const addUser = () => {
+            const nameUser = prompt("Informe o nome da pessoa");
+            const emailUser = prompt("Informe o email da pessoa");
+            if (!nameUser || !emailUser) {
+                alert("Os campos sao obrigatorios!");
+            }
+
+            // E OU -> Logicos (&&,||, !)
+            arrUsers.push({ nameUser, emailUser });
+            console.log(arrUsers);
+        }
+        addUser()
+        // metodo de listagem de usuario => (verbo HTPP:GET)
+        const ListUser = () => {
+            
+                let ListUser = '';
+                arrUsers.forEach ((dataUser) =>{
+              
+                listUser += `Nome: ${dataUser.nameUser}, Email: ${dataUser.emailUser}`
+                               
+            });
+            alert ("******Lista de usuarios *******" + listUser)
+        };
+        ListUser(); 
+
+        //metodo de atualizar => (verbo htpp:put);
+        function UpdateUserInfo (){
+            const findEmail = prompt ("Informe o email que voce deseja atualizar!")
+            const usuarioEncontrado = arrUsers.find(user => user.emailUser === findEmail)
+            console.log (usuarioEncontrado)
+
+            if (usuarioEncontrado == findEmail){
+                alert ("Encontrei o usuario")
+            }else {
+                alert ("nao encontrei ninguem")
+                
+            }
+        }
+
+        UpdateUserInfo()
+    </script>
+
+
+</body>
+
+</html>
